@@ -25,7 +25,7 @@ def consumer_reporting_endpoint():
 
     data = request.get_json(force=True)
 
-    print(format(data))
+    # print(format(data))
 
     filename = "data/consumer-" + now.strftime("%d%m%Y-%H%M%S") + ".json"
     with open(filename, 'w') as outfile:
