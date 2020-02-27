@@ -1,2 +1,2 @@
 class BaseConfig:
-    DEBUG = False
+    DEBUG = True

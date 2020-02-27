@@ -27,8 +27,8 @@ def consumer_reporting_endpoint():
 
     # print(format(data))
 
-    filename = "data/consumer-" + now.strftime("%d%m%Y-%H%M%S") + ".json"
-    with open(filename, 'w') as outfile:
+    filename = "data/consumer-" + now.strftime("%d%m%Y") + ".json"
+    with open(filename, 'a') as outfile:
         json.dump(data, outfile)
 
     success = {'timestamp': now}
