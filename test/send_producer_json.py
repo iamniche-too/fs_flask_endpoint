@@ -3,7 +3,6 @@ import datetime
 import json
 
 ENDPOINT="http://localhost:8080"
-headers="Content-Type: application/json"
 
 class Post:
 

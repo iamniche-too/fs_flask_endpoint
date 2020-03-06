@@ -8,9 +8,8 @@ from flask import Blueprint, render_template, request, make_response, jsonify
 views_blueprint = Blueprint('main_view', __name__)
 
 consumer_throughput_queue = greenstalk.Client(host='127.0.0.1', port=12000, use='consumer_throughput')
-producer_count_queue = greenstalk.Client(host='127.0.0.1', port=12000, use='producer_count')
 
-producer_id_set = set([])
+current_filename = ""
 
 @views_blueprint.route('/')
 def web_root():
@@ -18,37 +17,9 @@ def web_root():
                  }
     return render_template("index.html", **page_vars)
 
-
-@views_blueprint.route('/producer_count_endpoint', methods=['POST'])
-def producer_count_endpoint():
-    now = datetime.now()
-
-    if not request.is_json:
-        failure = {'timestamp': now}
-        return make_response(jsonify(failure), 400)
-
-    data = request.get_json(force=True)
-
-    # print(data)
-
-    producer_id = data["producer_id"]
-    producer_id_set.add(producer_id)
-
-    # print(f"producer_id_set={producer_id_set}")
-
-    producer_id_count = len(producer_id_set)
-    # print(f"producer_id_count={producer_id_count}")
-
-    if producer_count_queue:
-        producer_count_queue.put(str(producer_id_count))
-        print(f"Added {producer_id_count} to producer count queue")
-
-    success = {'timestamp': now}
-
-    return make_response(jsonify(success), 200)
-
 @views_blueprint.route('/consumer_reporting_endpoint', methods=['POST'])
 def consumer_reporting_endpoint():
+    global current_filename
 
     now = datetime.now()
 
@@ -58,15 +29,24 @@ def consumer_reporting_endpoint():
 
     data = request.get_json(force=True)
 
-    # print(format(data))
+    print(format(data))
+    if "message" in data:
+        # create a new file
+        current_filename = "data/consumer_" + now.strftime("%d%m%Y_%H%M%S") + ".json"
+        print(f"Setting current_filename={current_filename}")
+        file = open(current_filename, 'a')
+        file.write("{ 'values': [")
+        file.close()
+    else:
+        print(f"Using current_filename={current_filename}")
+        with open(current_filename, 'a') as outfile:
+            json.dump(data, outfile)
+            outfile.write(",\r\n")
+            outfile.close()
 
-    filename = "data/consumer-" + now.strftime("%d%m%Y") + ".json"
-    with open(filename, 'a') as outfile:
-        json.dump(data, outfile)
-
-    if consumer_throughput_queue:
-        consumer_throughput_queue.put(json.dump(data))
-        print(f"Added {data} to consumer throughput queue")
+        if consumer_throughput_queue:
+            consumer_throughput_queue.put(json.dumps(data))
+            print(f"Added {data} to consumer throughput queue")
 
     success = {'timestamp': now}
 
