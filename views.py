@@ -53,12 +53,17 @@ def consumer_reporting_endpoint():
     data = request.get_json(force=True)
 
     print(format(data))
-    if "message" in data:
+
+    # is this configuration data?
+    if "machine_size" in data:
         # create a new file
         current_filename = "data/consumer_" + now.strftime("%d%m%Y_%H%M%S") + ".json"
         print(f"Setting current_filename={current_filename}")
         file = open(current_filename, 'a')
-        file.write("{ \"values\": [")
+        file.write(" \"configuration\": [\n")
+        json.dump(data, outfile)
+        file.write("],\n")
+        file.write("\"values\": [\n")
         file.close()
     else:
         print(f"Using current_filename={current_filename}")
@@ -66,7 +71,7 @@ def consumer_reporting_endpoint():
             producer_count = get_producer_count()
             data["producer_count"] = producer_count
             json.dump(data, outfile)
-            outfile.write(",\r\n")
+            outfile.write(",\n")
             outfile.close()
 
         if consumer_throughput_queue:
