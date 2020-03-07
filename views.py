@@ -45,7 +45,7 @@ def consumer_reporting_endpoint():
             outfile.close()
 
         if consumer_throughput_queue:
-            throughput = float(data["throughput"])
+            throughput = str(data["throughput"])
             print(f"Adding throughput {throughput} to consumer_throughput_queue")
             consumer_throughput_queue.put(throughput)
 
