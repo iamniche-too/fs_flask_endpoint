@@ -60,7 +60,7 @@ def consumer_reporting_endpoint():
         current_filename = "data/consumer_" + now.strftime("%d%m%Y_%H%M%S") + ".json"
         print(f"Setting current_filename={current_filename}")
         file = open(current_filename, 'a')
-        file.write(" \"configuration\": [\n")
+        file.write("[{ \"configuration\": [\n")
         json.dump(data, file)
         file.write("],\n")
         file.write("\"values\": [\n")
