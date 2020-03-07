@@ -14,4 +14,4 @@ def create_app(settings_class):
 if __name__ == '__main__':
     app = create_app('settings.local_config.Config')
     # app.run(host='0.0.0.0', debug=app.config['DEBUG'], use_reloader=False, port=8080)
-    app.run(debug=app.config['DEBUG'], use_reloader=True, port=8080)
+    app.run(host='0.0.0.0', debug=app.config['DEBUG'], use_reloader=True, port=900)

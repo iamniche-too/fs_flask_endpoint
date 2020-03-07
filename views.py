@@ -45,8 +45,9 @@ def consumer_reporting_endpoint():
             outfile.close()
 
         if consumer_throughput_queue:
-            consumer_throughput_queue.put(json.dumps(data))
-            print(f"Added {data} to consumer throughput queue")
+            throughput = float(data["throughput"])
+            print(f"Adding throughput {throughput} to consumer_throughput_queue")
+            consumer_throughput_queue.put(throughput)
 
     success = {'timestamp': now}
 
