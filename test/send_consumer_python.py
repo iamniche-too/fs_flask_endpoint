@@ -3,7 +3,10 @@ import json
 
 import requests
 
-ENDPOINT = "http://localhost:8080"
+HOST="localhost"
+PORT=900
+HOST="focussensors.duckdns.org"
+ENDPOINT = "http://" + HOST + ":" + str(PORT)
 
 class Post:
 
@@ -23,6 +26,7 @@ class Post:
         print(post_result)
 
 if __name__ == '__main__':
+    print(f"ENDPOINT={ENDPOINT}")
     p = Post()
     p.post(1, 75, init=True)
     p.post(1, 75, init=False)
