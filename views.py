@@ -44,6 +44,7 @@ def web_root():
     return render_template("index.html", **page_vars)
 
 
+# Endpoint for producers to query for an id
 @views_blueprint.route('/producer_id')
 def producer_id_endpoint():
     global producer_id
