@@ -1,3 +1,4 @@
+import subprocess
 import json
 from datetime import datetime
 import greenstalk
@@ -10,6 +11,28 @@ views_blueprint = Blueprint('main_view', __name__)
 consumer_throughput_queue = greenstalk.Client(host='127.0.0.1', port=12000, use='consumer_throughput')
 
 current_filename = ""
+SCRIPT_DIR="./scripts"
+
+def bash_command_with_output(additional_args, working_directory):
+  args = ['/bin/bash', '-e'] + additional_args
+  print(args)
+  p = subprocess.Popen(args, stdout=subprocess.PIPE, cwd=working_directory)
+  p.wait()
+  out = p.communicate()[0].decode("UTF-8")
+  return out
+
+def get_producer_count():
+  filename = "./get-producers-count.sh"
+  args = [filename]
+
+  producer_count = 0
+  try:
+    producer_count = int(bash_command_with_output(args, SCRIPT_DIR))
+  except ValueError:
+    pass
+
+  print(f"reported_producer_count={producer_count}")
+  return producer_count
 
 producer_id = 0
 
@@ -42,22 +65,29 @@ def consumer_reporting_endpoint():
     data = request.get_json(force=True)
 
     print(format(data))
-    if "message" in data:
+
+    # is this configuration data?
+    if "machine_size" in data:
         # create a new file
         current_filename = "data/consumer_" + now.strftime("%d%m%Y_%H%M%S") + ".json"
         print(f"Setting current_filename={current_filename}")
         file = open(current_filename, 'a')
-        file.write("{ \"values\": [")
+        file.write("[{ \"configuration\": [\n")
+        json.dump(data, file)
+        file.write("],\n")
+        file.write("\"values\": [\n")
         file.close()
     else:
         print(f"Using current_filename={current_filename}")
         with open(current_filename, 'a') as outfile:
+            producer_count = get_producer_count()
+            data["producer_count"] = producer_count
             json.dump(data, outfile)
-            outfile.write(",\r\n")
+            outfile.write(",\n")
             outfile.close()
 
         if consumer_throughput_queue:
-            throughput = float(data["throughput"])
+            throughput = str(data["throughput"])
             print(f"Adding throughput {throughput} to consumer_throughput_queue")
             consumer_throughput_queue.put(throughput)
 
