@@ -11,11 +11,23 @@ consumer_throughput_queue = greenstalk.Client(host='127.0.0.1', port=12000, use=
 
 current_filename = ""
 
+producer_id = 0
+
+
 @views_blueprint.route('/')
 def web_root():
     page_vars = {'page_name': 'Home',
                  }
     return render_template("index.html", **page_vars)
+
+
+@views_blueprint.route('/producer_id')
+def producer_id_endpoint():
+    global producer_id
+    producer_id += 1
+    success = {'producer_id': producer_id}
+    return make_response(jsonify(success), 200)
+
 
 @views_blueprint.route('/consumer_reporting_endpoint', methods=['POST'])
 def consumer_reporting_endpoint():
