@@ -80,17 +80,20 @@ def consumer_reporting_endpoint():
         file.close()
     else:
         print(f"Using current_filename={current_filename}")
+        producer_count = get_producer_count()
+        data["producer_count"] = producer_count
+
+        # write out to file
         with open(current_filename, 'a') as outfile:
-            producer_count = get_producer_count()
-            data["producer_count"] = producer_count
             json.dump(data, outfile)
             outfile.write(",\n")
             outfile.close()
 
+        # write to queue
         if consumer_throughput_queue:
-            throughput = str(data["throughput"])
-            print(f"Adding throughput {throughput} to consumer_throughput_queue")
-            consumer_throughput_queue.put(throughput)
+            json_payload = json.dumps(data)
+            print(f"Sending {json_payload} to consumer_throughput_queue")
+            consumer_throughput_queue.put(json_payload)
 
     success = {'timestamp': now}
 
