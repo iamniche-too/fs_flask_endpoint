@@ -6,6 +6,7 @@ import greenstalk
 import flask
 import requests
 from flask import Blueprint, render_template, request, make_response, jsonify
+from jsonpath_ng import jsonpath, parse
 
 views_blueprint = Blueprint('main_view', __name__)
 
@@ -78,14 +79,27 @@ def producer_id_endpoint():
 def get_consumer_lag(consumer_id):
     global burrow_ip
 
+    consumer_lag = 0
+
     burrow_cluster_name = "mykafka"
 
     # see https://github.com/linkedin/Burrow/wiki/http-request-get-consumer-detail
     if burrow_ip:
         endpoint_url = f"http://{burrow_ip}:8000/v3/kafka/{burrow_cluster_name}/consumer/{consumer_id}"
-        response = requests.get(endpoint_url)
-        print(response)
-    return 0
+        try:
+            response = requests.get(endpoint_url)
+            # parse the consumer lag using expression $.topics.*[0].current-lag
+            print(response)
+            jsonpath_expression = parse("$.topics.*[0].current-lag")
+            consumer_lag_match = jsonpath_expression.find(response)
+            print(f"consumer_lag_match[0].value: {consumer_lag_match[0].value}")
+            consumer_lag = int(consumer_lag_match[0].value)
+        except requests.ConnectionError as e:
+            print(e)
+            # try getting the IP again?
+            burrow_ip = set_burrow_ip()
+
+    return consumer_lag
 
 
 @views_blueprint.route('/consumer_reporting_endpoint', methods=['POST'])

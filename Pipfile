@@ -12,6 +12,7 @@ flask = "*"
 greenstalk = "*"
 requests = "*"
 aiohttp = "*"
+jsonpath_ng = "*"
 
 [requires]
 python_version = "3.8.1"
