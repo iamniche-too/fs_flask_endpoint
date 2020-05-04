@@ -76,6 +76,15 @@ def producer_id_endpoint():
     return make_response(jsonify(success), 200)
 
 
+# parse the consumer lag using expression $.topics.*[0].current-lag
+def parse_response(response):
+    jsonpath_expression = parse("$.topics.*[0].current-lag")
+    consumer_lag_match = jsonpath_expression.find(response)
+    print(f"consumer_lag_match[0].value: {consumer_lag_match[0].value}")
+    consumer_lag = int(consumer_lag_match[0].value)
+    return consumer_lag
+
+
 def get_consumer_lag(consumer_id):
     global burrow_ip
 
@@ -86,14 +95,13 @@ def get_consumer_lag(consumer_id):
     # see https://github.com/linkedin/Burrow/wiki/http-request-get-consumer-detail
     if burrow_ip:
         endpoint_url = f"http://{burrow_ip}:8000/v3/kafka/{burrow_cluster_name}/consumer/{consumer_id}"
+        print(endpoint_url)
         try:
             response = requests.get(endpoint_url)
-            # parse the consumer lag using expression $.topics.*[0].current-lag
-            print(response)
-            jsonpath_expression = parse("$.topics.*[0].current-lag")
-            consumer_lag_match = jsonpath_expression.find(response)
-            print(f"consumer_lag_match[0].value: {consumer_lag_match[0].value}")
-            consumer_lag = int(consumer_lag_match[0].value)
+            if response.status_code == 200:  # success
+                consumer_lag = parse_response(response)
+            else:
+                print(response)
         except requests.ConnectionError as e:
             print(e)
             # try getting the IP again?
