@@ -126,7 +126,7 @@ def consumer_reporting_endpoint():
             consumer_id = data["consumer_id"]
             consumer_lag = get_consumer_lag(consumer_id)
             data["consumer_lag"] = consumer_lag
-        else
+        else:
             print("Burrow IP not set so ignoring consumer lag...")
 
         # write out to file
