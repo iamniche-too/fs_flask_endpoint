@@ -82,7 +82,7 @@ def get_consumer_lag(consumer_id):
 
     # see https://github.com/linkedin/Burrow/wiki/http-request-get-consumer-detail
     if burrow_ip:
-        endpoint_url = f"http://{burrow_ip}/v3/kafka/{burrow_cluster_name}/consumer/{consumer_id}"
+        endpoint_url = f"http://{burrow_ip}:8000/v3/kafka/{burrow_cluster_name}/consumer/{consumer_id}"
         response = requests.get(endpoint_url)
         print(response)
     return 0
