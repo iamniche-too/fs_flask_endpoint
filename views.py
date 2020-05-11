@@ -82,8 +82,13 @@ def producer_id_endpoint():
 def get_total_lag(response):
     jsonpath1 = parse(TOTAL_LAG)
     matches = jsonpath1.find(response)
-    total_lag = int(matches[0].value)
-    return total_lag
+
+    total_lag = 0
+    if matches[0].value:
+        total_lag = int(matches[0].value)
+
+    total_lag_dict = {"total_lag": total_lag}
+    return total_lag_dict
 
 
 def get_max_lag(response):
@@ -91,14 +96,18 @@ def get_max_lag(response):
     max_lag_topic = jsonpath1.find(response)
     jsonpath2 = parse(MAX_LAG)
     max_lag = jsonpath2.find(response)
-    max_lag_dict = {max_lag_topic[0].value: max_lag[0].value}
+    
+    max_lag_dict = {}
+    if max_lag_topic[0].value and max_lag[0].value:
+        max_lag_dict = {max_lag_topic[0].value: max_lag[0].value}
+
     return max_lag_dict
 
 
 def parse_burrow_response(response):
     max_lag_dict = get_max_lag(response)
     total_lag = get_total_lag()
-    max_lag_dict["total_lag"] = total_lag
+    max_lag_dict.update(total_lag)
     return max_lag_dict
 
 
