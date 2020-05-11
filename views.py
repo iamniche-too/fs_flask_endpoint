@@ -80,6 +80,11 @@ def producer_id_endpoint():
 def parse_response(response):
     jsonpath_expression = parse(STATUS_TOTALLAG)
     consumer_lag_match = jsonpath_expression.find(response)
+
+    if not consumer_lag_match[0].value:
+        print("Warn: unable to parse JSON response for total lag.")
+        return 0
+
     print(f"status.totallag: {consumer_lag_match[0].value}")
     consumer_lag = int(consumer_lag_match[0].value)
     return consumer_lag

@@ -1,0 +1,60 @@
+{
+  "error": false,
+  "message": "consumer status returned",
+  "status": {
+    "cluster": "mykafka",
+    "group": "consumer-6dfcc5849b-h6ml7",
+    "status": "OK",
+    "complete": 1,
+    "partitions": [
+      {
+        "topic": "sensor1",
+        "partition": 0,
+        "owner": "",
+        "client_id": "",
+        "status": "OK",
+        "start": {
+          "offset": 6696,
+          "timestamp": 1589197118438,
+          "observedAt": 1589197118000,
+          "lag": 0
+        },
+        "end": {
+          "offset": 13671,
+          "timestamp": 1589197188436,
+          "observedAt": 1589197188000,
+          "lag": 0
+        },
+        "current_lag": 0,
+        "complete": 1
+      }
+    ],
+    "partition_count": 1,
+    "maxlag": {
+      "topic": "sensor1",
+      "partition": 0,
+      "owner": "",
+      "client_id": "",
+      "status": "OK",
+      "start": {
+        "offset": 6696,
+        "timestamp": 1589197118438,
+        "observedAt": 1589197118000,
+        "lag": 0
+      },
+      "end": {
+        "offset": 13671,
+        "timestamp": 1589197188436,
+        "observedAt": 1589197188000,
+        "lag": 0
+      },
+      "current_lag": 0,
+      "complete": 1
+    },
+    "totallag": 0
+  },
+  "request": {
+    "url": "/v3/kafka/mykafka/consumer/consumer-6dfcc5849b-h6ml7/lag",
+    "host": "burrow-66b4fd4f49-l2dtv"
+  }
+}
