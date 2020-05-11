@@ -1,0 +1,599 @@
+{
+  "error": false ,
+  "message": "consumer status returned" ,
+  "status": {
+    "cluster": "mykafka" ,
+    "group": "consumer-6dfcc5849b-6s868" ,
+    "status": "OK" ,
+    "complete": 0 ,
+    "partitions": [
+      {
+        "topic": "sensor33" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor8" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor36" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor17" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor24" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor20" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor34" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor25" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor6" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor5" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor7" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor19" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor42" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor12" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor49" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor10" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor31" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor0" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor47" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor4" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor2" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor9" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor37" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor22" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor28" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor45" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor43" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor39" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor1" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor21" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor3" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": {
+          "offset": 1 ,
+          "timestamp": 1588793540508 ,
+          "observedAt": 1588793540000 ,
+          "lag": 0
+        } ,
+        "end": {
+          "offset": 1 ,
+          "timestamp": 1588793540508 ,
+          "observedAt": 1588793540000 ,
+          "lag": 0
+        } ,
+        "current_lag": 3585 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor23" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor46" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor26" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor18" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor40" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor14" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor16" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor48" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor35" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor15" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor38" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor44" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor41" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor27" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor30" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor29" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor32" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor11" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      } ,
+      {
+        "topic": "sensor13" ,
+        "partition": 0 ,
+        "owner": "/10.16.8.17" ,
+        "client_id": "rdkafka" ,
+        "status": "OK" ,
+        "start": null ,
+        "end": null ,
+        "current_lag": 0 ,
+        "complete": 0.06666667
+      }
+    ] ,
+    "partition_count": 50 ,
+    "maxlag": {
+      "topic": "sensor3" ,
+      "partition": 0 ,
+      "owner": "/10.16.8.17" ,
+      "client_id": "rdkafka" ,
+      "status": "OK" ,
+      "start": {
+        "offset": 1 ,
+        "timestamp": 1588793540508 ,
+        "observedAt": 1588793540000 ,
+        "lag": 0
+      } ,
+      "end": {
+        "offset": 1 ,
+        "timestamp": 1588793540508 ,
+        "observedAt": 1588793540000 ,
+        "lag": 0
+      } ,
+      "current_lag": 3585 ,
+      "complete": 0.06666667
+    } ,
+    "totallag": 3585
+  } ,
+  "request": {
+    "url": "/v3/kafka/mykafka/consumer/consumer-6dfcc5849b-6s868/lag" ,
+    "host": "burrow-66b4fd4f49-4lw4l"
+  }
+}

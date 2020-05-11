@@ -18,6 +18,7 @@ burrow_ip = None
 SCRIPT_DIR = "./scripts"
 BURROW_DIR = "../fs-burrow-k8s"
 
+STATUS_TOTALLAG = "status.totallag"
 
 def bash_command_with_output(additional_args, working_directory):
     args = ['/bin/bash', '-e'] + additional_args
@@ -76,11 +77,10 @@ def producer_id_endpoint():
     return make_response(jsonify(success), 200)
 
 
-# parse the consumer lag using expression $.topics.*[0].current-lag
 def parse_response(response):
-    jsonpath_expression = parse("$.topics.*[0].current-lag")
+    jsonpath_expression = parse(STATUS_TOTALLAG)
     consumer_lag_match = jsonpath_expression.find(response)
-    print(f"consumer_lag_match[0].value: {consumer_lag_match[0].value}")
+    print(f"status.totallag: {consumer_lag_match[0].value}")
     consumer_lag = int(consumer_lag_match[0].value)
     return consumer_lag
 
