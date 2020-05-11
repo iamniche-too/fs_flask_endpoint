@@ -105,8 +105,8 @@ def get_max_lag(response):
 
 
 def parse_burrow_response(response):
-    max_lag_dict = get_max_lag(response)
-    total_lag = get_total_lag(response)
+    max_lag_dict = get_max_lag(response.json())
+    total_lag = get_total_lag(response.json())
     max_lag_dict.update(total_lag)
     return max_lag_dict
 

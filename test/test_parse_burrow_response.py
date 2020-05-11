@@ -1,6 +1,8 @@
 import json
 import os
 import unittest
+
+import requests
 from jsonpath_ng import jsonpath, parse
 
 TOTAL_LAG = "status.totallag"
@@ -8,7 +10,7 @@ MAX_LAG_TOPIC = "status.maxlag.topic"
 MAX_LAG = "status.maxlag.current_lag"
 
 TEST_PATH = os.path.dirname(os.path.abspath(__file__))
-TEST_FILE_PATH = os.path.join(TEST_PATH, "example-consumer-lag3.json")
+TEST_FILE_PATH = os.path.join(TEST_PATH, "example-consumer-lag2.json")
 
 
 def get_total_lag(response):
@@ -35,12 +37,12 @@ class TestParseBurrowResponse(unittest.TestCase):
         with open(TEST_FILE_PATH) as file:
             self.json = json.load(file)
 
-    def test_list(self):
-        mylist = [{"1": 1}]
-        if mylist[0]:
-            self.assertTrue(True)
-        else:
-            self.assertTrue(False)
+    def xtest_get_max_lag_live(self):
+        response = requests.get("http://34.105.182.141:8000/v3/kafka/mykafka/consumer/consumer-6dfcc5849b-fmjpf/lag")
+        # print(f"response: {response.json()}")
+        json = response.json()
+        max_lag = get_max_lag(json)
+        print(max_lag)
 
     def test_get_total_lag(self):
         total_lag = get_total_lag(self.json)

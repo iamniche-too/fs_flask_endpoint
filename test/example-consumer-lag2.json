@@ -3,9 +3,9 @@
   "message": "consumer status returned",
   "status": {
     "cluster": "mykafka",
-    "group": "consumer-6dfcc5849b-h6ml7",
+    "group": "consumer-6dfcc5849b-fmjpf",
     "status": "OK",
-    "complete": 1,
+    "complete": 0,
     "partitions": [
       {
         "topic": "sensor1",
@@ -14,19 +14,19 @@
         "client_id": "",
         "status": "OK",
         "start": {
-          "offset": 6696,
-          "timestamp": 1589197118438,
-          "observedAt": 1589197118000,
+          "offset": 453,
+          "timestamp": 1589212635176,
+          "observedAt": 1589212635000,
           "lag": 0
         },
         "end": {
-          "offset": 13671,
-          "timestamp": 1589197188436,
-          "observedAt": 1589197188000,
+          "offset": 6436,
+          "timestamp": 1589212695175,
+          "observedAt": 1589212695000,
           "lag": 0
         },
         "current_lag": 0,
-        "complete": 1
+        "complete": 0.8666667
       }
     ],
     "partition_count": 1,
@@ -37,24 +37,24 @@
       "client_id": "",
       "status": "OK",
       "start": {
-        "offset": 6696,
-        "timestamp": 1589197118438,
-        "observedAt": 1589197118000,
+        "offset": 453,
+        "timestamp": 1589212635176,
+        "observedAt": 1589212635000,
         "lag": 0
       },
       "end": {
-        "offset": 13671,
-        "timestamp": 1589197188436,
-        "observedAt": 1589197188000,
+        "offset": 6436,
+        "timestamp": 1589212695175,
+        "observedAt": 1589212695000,
         "lag": 0
       },
       "current_lag": 0,
-      "complete": 1
+      "complete": 0.8666667
     },
     "totallag": 0
   },
   "request": {
-    "url": "/v3/kafka/mykafka/consumer/consumer-6dfcc5849b-h6ml7/lag",
-    "host": "burrow-66b4fd4f49-l2dtv"
+    "url": "/v3/kafka/mykafka/consumer/consumer-6dfcc5849b-fmjpf/lag",
+    "host": "burrow-66b4fd4f49-5smf6"
   }
 }
