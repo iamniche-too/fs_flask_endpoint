@@ -18,7 +18,9 @@ burrow_ip = None
 SCRIPT_DIR = "./scripts"
 BURROW_DIR = "../fs-burrow-k8s"
 
-STATUS_TOTALLAG = "status.totallag"
+TOTAL_LAG = "status.totallag"
+MAX_LAG_TOPIC = "status.maxlag.topic"
+MAX_LAG = "status.maxlag.current_lag"
 
 def bash_command_with_output(additional_args, working_directory):
     args = ['/bin/bash', '-e'] + additional_args
@@ -77,23 +79,33 @@ def producer_id_endpoint():
     return make_response(jsonify(success), 200)
 
 
-def parse_response(response):
-    jsonpath_expression = parse(STATUS_TOTALLAG)
-    consumer_lag_match = jsonpath_expression.find(response)
+def get_total_lag(response):
+    jsonpath1 = parse(TOTAL_LAG)
+    matches = jsonpath1.find(response)
+    total_lag = int(matches[0].value)
+    return total_lag
 
-    if not consumer_lag_match[0].value:
-        print("Warn: unable to parse JSON response for total lag.")
-        return 0
 
-    print(f"status.totallag: {consumer_lag_match[0].value}")
-    consumer_lag = int(consumer_lag_match[0].value)
-    return consumer_lag
+def get_max_lag(response):
+    jsonpath1 = parse(MAX_LAG_TOPIC)
+    max_lag_topic = jsonpath1.find(response)
+    jsonpath2 = parse(MAX_LAG)
+    max_lag = jsonpath2.find(response)
+    max_lag_dict = {max_lag_topic[0].value: max_lag[0].value}
+    return max_lag_dict
+
+
+def parse_burrow_response(response):
+    max_lag_dict = get_max_lag(response)
+    total_lag = get_total_lag()
+    max_lag_dict["total_lag"] = total_lag
+    return max_lag_dict
 
 
 def get_consumer_lag(consumer_id):
     global burrow_ip
 
-    consumer_lag = 0
+    consumer_lag = {}
 
     burrow_cluster_name = "mykafka"
 
@@ -104,7 +116,7 @@ def get_consumer_lag(consumer_id):
         try:
             response = requests.get(endpoint_url)
             if response.status_code == 200:  # success
-                consumer_lag = parse_response(response)
+                consumer_lag = parse_burrow_response(response)
             else:
                 print(response)
         except requests.ConnectionError as e:
@@ -152,7 +164,9 @@ def consumer_reporting_endpoint():
         if burrow_ip:
             consumer_id = data["consumer_id"]
             consumer_lag = get_consumer_lag(consumer_id)
-            data["consumer_lag"] = consumer_lag
+
+            # append to dict
+            data.update(consumer_lag)
         else:
             print("Burrow IP not set so ignoring consumer lag...")
 
