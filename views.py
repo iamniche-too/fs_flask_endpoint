@@ -84,7 +84,7 @@ def get_total_lag(response):
     matches = jsonpath1.find(response)
 
     total_lag = 0
-    if matches[0].value:
+    if matches[0]:
         total_lag = int(matches[0].value)
 
     total_lag_dict = {"total_lag": total_lag}
@@ -96,9 +96,9 @@ def get_max_lag(response):
     max_lag_topic = jsonpath1.find(response)
     jsonpath2 = parse(MAX_LAG)
     max_lag = jsonpath2.find(response)
-    
+
     max_lag_dict = {}
-    if max_lag_topic[0].value and max_lag[0].value:
+    if max_lag_topic[0] and max_lag[0]:
         max_lag_dict = {max_lag_topic[0].value: max_lag[0].value}
 
     return max_lag_dict

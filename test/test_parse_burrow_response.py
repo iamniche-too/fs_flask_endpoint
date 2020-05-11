@@ -35,6 +35,13 @@ class TestParseBurrowResponse(unittest.TestCase):
         with open(TEST_FILE_PATH) as file:
             self.json = json.load(file)
 
+    def test_list(self):
+        mylist = [{"1": 1}]
+        if mylist[0]:
+            self.assertTrue(True)
+        else:
+            self.assertTrue(False)
+
     def test_get_total_lag(self):
         total_lag = get_total_lag(self.json)
         print(f"total_lag: {total_lag}")
