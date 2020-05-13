@@ -136,6 +136,22 @@ def get_consumer_lag(consumer_id):
     return consumer_lag
 
 
+@views_blueprint.route('/test', methods=['POST'])
+def test_endpoint():
+    now = datetime.now()
+
+    if not request.is_json:
+        failure = {'timestamp': now}
+        return make_response(jsonify(failure), 400)
+
+    data = request.get_json(force=True)
+
+    print(data)
+
+    success = {'timestamp': now}
+    return make_response(jsonify(success), 200)
+
+
 @views_blueprint.route('/consumer_reporting_endpoint', methods=['POST'])
 def consumer_reporting_endpoint():
     global current_filename, burrow_ip
