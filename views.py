@@ -175,7 +175,7 @@ def test_with_timeout_endpoint():
 
 # 2020-05-20 14:12:32,438
 def format_date(timestamp):
-    timestamp = datetime.datetime.fromtimestamp(timestamp)
+    timestamp = datetime.fromtimestamp(timestamp)
     return timestamp.strftime('%Y-%m-%d %H:%M:%S')
 
 
