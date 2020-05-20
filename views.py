@@ -1,5 +1,6 @@
 import subprocess
 import json
+import time
 from datetime import datetime
 import greenstalk
 
@@ -152,6 +153,29 @@ def test_endpoint():
     return make_response(jsonify(success), 200)
 
 
+@views_blueprint.route('/test-with-timeout', methods=['POST'])
+def test_with_timeout_endpoint():
+    now = datetime.now()
+
+    if not request.is_json:
+        failure = {'timestamp': now}
+        return make_response(jsonify(failure), 400)
+
+    data = request.get_json(force=True)
+
+    print(data)
+
+    # now sleep for more than default timeout of 5 seconds
+    time.sleep(10)
+
+    success = {'timestamp': now}
+    return make_response(jsonify(success), 200)
+
+# 2020-05-20 14:12:32,438
+def format_date(timestamp)
+    timestamp = datetime.datetime.fromtimestamp(timestamp)
+    return timestamp.strftime('%Y-%m-%d %H:%M:%S')
+
 @views_blueprint.route('/consumer_reporting_endpoint', methods=['POST'])
 def consumer_reporting_endpoint():
     global current_filename, burrow_ip
@@ -194,6 +218,9 @@ def consumer_reporting_endpoint():
             data.update(consumer_lag)
         else:
             print("Burrow IP not set so ignoring consumer lag...")
+
+        # convert timestamp to date format
+        data["timestamp"] = format_date(data["timestamp"])
 
         # write out to file
         with open(current_filename, 'a') as outfile:
