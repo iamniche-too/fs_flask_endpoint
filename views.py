@@ -23,6 +23,7 @@ TOTAL_LAG = "status.totallag"
 MAX_LAG_TOPIC = "status.maxlag.topic"
 MAX_LAG = "status.maxlag.current_lag"
 
+
 def bash_command_with_output(additional_args, working_directory):
     args = ['/bin/bash', '-e'] + additional_args
     print(args)
@@ -171,10 +172,12 @@ def test_with_timeout_endpoint():
     success = {'timestamp': now}
     return make_response(jsonify(success), 200)
 
+
 # 2020-05-20 14:12:32,438
-def format_date(timestamp)
+def format_date(timestamp):
     timestamp = datetime.datetime.fromtimestamp(timestamp)
     return timestamp.strftime('%Y-%m-%d %H:%M:%S')
+
 
 @views_blueprint.route('/consumer_reporting_endpoint', methods=['POST'])
 def consumer_reporting_endpoint():
