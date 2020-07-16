@@ -1,13 +1,13 @@
+import os
 import subprocess
 import json
 import time
 from datetime import datetime
 import greenstalk
 
-import flask
 import requests
 from flask import Blueprint, render_template, request, make_response, jsonify
-from jsonpath_ng import jsonpath, parse
+from jsonpath_ng import parse
 
 views_blueprint = Blueprint('main_view', __name__)
 
@@ -200,8 +200,14 @@ def consumer_reporting_endpoint():
 
     # is this configuration data?
     if "machine_size" in data:
+        base_directory = os.path.dirname(os.path.abspath(__file__))
+        sub_directory = os.path.join(base_directory, 'data', now.strftime("%Y-%m-%d"))
+
+        if not os.path.exists(sub_directory):
+            os.makedirs(sub_directory)
+
         # create a new file
-        current_filename = "data/consumer_" + now.strftime("%d%m%Y_%H%M%S") + ".json"
+        current_filename = sub_directory + "/consumer_" + now.strftime("%Y%m%d_%H%M%S") + ".json"
         print(f"Setting current_filename={current_filename}")
         file = open(current_filename, 'a')
         file.write("[{ \"configuration\": [\n")
