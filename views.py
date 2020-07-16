@@ -23,6 +23,8 @@ TOTAL_LAG = "status.totallag"
 MAX_LAG_TOPIC = "status.maxlag.topic"
 MAX_LAG = "status.maxlag.current_lag"
 
+start_time_s = 0
+elapsed_time_s = 0
 
 def bash_command_with_output(additional_args, working_directory):
     args = ['/bin/bash', '-e'] + additional_args
@@ -181,7 +183,7 @@ def format_date(timestamp):
 
 @views_blueprint.route('/consumer_reporting_endpoint', methods=['POST'])
 def consumer_reporting_endpoint():
-    global current_filename, burrow_ip
+    global current_filename, burrow_ip, start_time_s, elapsed_time_s
 
     if not burrow_ip:
         set_burrow_ip()
@@ -207,8 +209,12 @@ def consumer_reporting_endpoint():
         file.write("],\n")
         file.write("\"values\": [\n")
         file.close()
+        start_time_s = time.time()
     else:
         print(f"Writing data to current_filename={current_filename}")
+
+        elapsed_time_s = time.time() - start_time_s
+        data["elapsed_time_s"] = elapsed_time_s
 
         producer_count = get_producer_count()
         data["producer_count"] = producer_count
