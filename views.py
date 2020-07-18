@@ -207,7 +207,7 @@ def consumer_reporting_endpoint():
             os.makedirs(sub_directory)
 
         # create a new file
-        current_filename = sub_directory + "/consumer_" + now.strftime("%Y%m%d_%H%M%S") + ".json"
+        current_filename = os.path.join(sub_directory, data["configuration_uid"] + ".json")
         print(f"Setting current_filename={current_filename}")
         file = open(current_filename, 'a')
         file.write("[{ \"configuration\": [\n")
