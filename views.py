@@ -198,10 +198,12 @@ def consumer_reporting_endpoint():
 
     print(format(data))
 
-    # is this configuration data?
-    if "machine_size" in data:
+    # is this run/configuration data?
+    if "run_uid" in data:
         base_directory = os.path.dirname(os.path.abspath(__file__))
-        sub_directory = os.path.join(base_directory, 'data', now.strftime("%Y-%m-%d"))
+
+        # organise by day and run_uid
+        sub_directory = os.path.join(base_directory, 'data', now.strftime("%Y-%m-%d"), data["run_uid"])
 
         if not os.path.exists(sub_directory):
             os.makedirs(sub_directory)
